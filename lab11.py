@@ -17,14 +17,47 @@ def assign_stats():
 	}
 	return stats
 
-def format_character_card(name, stats):
-	card = f"Имя: {name}\nСила: {stats['Strength']}\nЛовкость: {stats['Agility']}\nИнтеллект: {stats['Intelligence']}\nТелосложение: {stats['Constitution']}"
+def generate_race():
+	races = [
+		"Человек",
+		"Эльф",
+		"Гном",
+		"Дворф",
+		"Орк",
+		"Троль",
+		"Тифлинг"
+	]
+	return random.choice(races)
+
+def generate_class():
+	classes = [
+		"Воин",
+		"Паладин",
+		"Маг",
+		"Чародей",
+		"Бард",
+		"Жрец",
+		"Друид"
+	]
+	return random.choice(classes)
+
+def format_character_card(name, stats, race, char_class):
+	card = (f"Имя: {name}\n"
+			f"Раса: {race}\n"
+			f"Класс: {char_class}\n"
+			f"Сила: {stats['Strength']}\n"
+			f"Ловкость: {stats['Agility']}\n"
+			f"Интеллект: {stats['Intelligence']}\n"
+			f"Телосложение: {stats['Constitution']}"
+	)
 	return card
 
 def main():
 	name = generate_name()
 	stats = assign_stats()
-	print(format_character_card(name, stats))
+	race = generate_race()
+	char_class = generate_class()
+	print(format_character_card(name, stats, race, char_class))
 
 if __name__ == "__main__":
 	main()
